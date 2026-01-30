@@ -7,17 +7,14 @@ dataset from Kaggle
 - **xgboost_phising_98acc.pkl** : model terlalu strict, masa "https://www.google.com" dianggap phishing wkwkwk, FALSE NEGATIF : 1,296 link phishing lolos
   yang ini ditambah TF-IDF.
 
-
-
-
 📊 Perbandingan Performa Model
 
 Tabel berikut menunjukkan peningkatan performa antara model lama (XGBoost standar) dan model baru (hasil tuning + fitur NLP):
 
-Metrik	Model Lama (XGB Biasa)	Model Baru (Tuned + NLP)	Improvement
-Akurasi	**~95.6%	98%	+2.4%**
-Recall (Daya Tangkap Phishing)	**~90%	97%	+7% **(Sangat Signifikan)
-False Negative (Link Phishing Lolos)	4.293 link	1.296 link	Turun ~70%
+Metrik Model Lama (XGB Biasa) Model Baru (Tuned + NLP) Improvement
+Akurasi **~95.6% 98% +2.4%**
+Recall (Daya Tangkap Phishing) **~90% 97% +7% **(Sangat Signifikan)
+False Negative (Link Phishing Lolos) 4.293 link 1.296 link Turun ~70%
 
 False Negative = phishing yang salah dikira aman
 
@@ -25,4 +22,6 @@ Semakin kecil nilainya, semakin aman sistem
 
 Akurasi naik ke 98%, menunjukkan peningkatan performa keseluruhan tanpa mengorbankan recall.
 
-
+- model_phishing.pkl = model xgboost yang blum di optimasi dan blum pake TF-IDF di dapet dari variabel final_model saat looping for name, model in models.items():.
+- tfidf_vectorizer.pkl = fitur teks untuk membaca link url yang disimpan pada variabel tfidf.
+- xgboost_phising_98acc.pkl = model xgboost yang sudah di optimasi, kombinasi dari fitur angka dan huruf. dari :X_final = hstack([numeric_without_target.astype(float), text_features])
